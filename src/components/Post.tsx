@@ -1,12 +1,12 @@
-import { useParams } from "react-router-dom"
+import { usePost } from "../context/PostContext"
 
 export function Post() {
-
-  const { id } = useParams()
+  const { post } = usePost()
 
   return (
     <>
-      <h1>{id}</h1>
+      <h1>{post?.title}</h1>
+      <article>{post?.body}</article>
     </>
   )
 }

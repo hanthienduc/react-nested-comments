@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAsync } from "../hooks/useAsync";
-import { Post } from "../interfaces/Post";
 import { getPosts } from "../service/post";
+import { Post } from "../types/PostContextType";
 
 export function PostList() {
 
@@ -14,7 +14,7 @@ export function PostList() {
     <>
       <h1>Posts</h1>
       {posts?.map(post =>
-        (<h1 key={post.id}><Link to={post.id}>{post.title}</Link></h1>)
+        (<h1 key={post.id}><Link to={`/posts/${post.id}`}>{post.title}</Link></h1>)
       )}
     </>
   )

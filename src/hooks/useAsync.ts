@@ -8,7 +8,7 @@ export function useAsync<Type>(func: () => Promise<any>, dependencies?: []) {
   return state
 }
 
-export function useAsyncFn<Type>(func: () => Promise<any>, dependencies: []) {
+export function useAsyncFn<Type>(func: () => Promise<any>, dependencies?: []) {
   return useAsyncInternal<Type>(func, dependencies, false)
 }
 
