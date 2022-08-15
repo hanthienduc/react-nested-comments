@@ -18,3 +18,26 @@ button {
 .mr-1 {
   margin-right: 0.25em;
 }
+
+.comment-form-row {
+  display: flex;
+  gap: .5rem;
+}
+
+.message-input {
+  flex-grow: 1;
+  resize: none;
+  height: 70px;
+  border-radius: .5rem;
+  padding: .5rem;
+  font-size: inherit;
+  font-family: inherit;
+  border: 2px solid hsl(235, 50%, 74%);
+  line-height: 1.4;
+}
+
+.message-input:focus {
+  border-color: hsl(235, 100%, 67%);
+  outline: none;
+}
+
