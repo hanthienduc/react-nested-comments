@@ -4,7 +4,7 @@ import { PostList } from './components/PostList';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Routes>
         <Route path='/' element={<PostList />} />
         <Route path='/posts/:id' element={<Post />} />

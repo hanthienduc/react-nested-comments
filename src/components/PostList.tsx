@@ -12,7 +12,7 @@ export function PostList() {
 
   return (
     <>
-      <h1>Post List</h1>
+      <h1>Posts</h1>
       {posts?.map(post =>
         (<h1 key={post.id}><Link to={post.id}>{post.title}</Link></h1>)
       )}
