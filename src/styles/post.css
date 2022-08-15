@@ -3,7 +3,18 @@ button {
   font-family: inherit;
 }
 
-comments-title {
-  margin-bottom: .5rem;
+.comments-title {
+  margin-bottom: 0.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mr-1 {
+  margin-right: 0.25em;
+}
