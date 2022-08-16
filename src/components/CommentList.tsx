@@ -10,7 +10,7 @@ export function CommentList({ comments }: CommentListProps) {
     <>
       {comments.map(comment => (
         <div key={comment.id}>
-          <CommentItem comment={comment} />
+          <CommentItem {...comment} />
         </div>
       ))}
     </>
