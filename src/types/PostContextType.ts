@@ -18,17 +18,25 @@ export interface Comment {
 }
 
 export interface Post {
-  id: string
-  title: string
-  body: string
-  comments: Comment[]
+  id: string | undefined
+  title?: string | undefined
+  body?: string
+  comments?: Comment[]
 }
 
 export type PostContextType = {
-  post?: Post | null
+  post?: Post
   children?: ReactNode | null
   rootComments?: Comment[] | null
   comments?: Comment[] | null
   setComments?: React.Dispatch<React.SetStateAction<string | null>>
   getReplies?: (id: string) => any
+  createLocalComment?: (comment: Comment) => void
+}
+
+export type CommentServiceType = {
+  postId?: string
+  message?: string
+  parentId?: string
+  id?: string
 }
