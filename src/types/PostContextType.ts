@@ -34,7 +34,7 @@ export type PostContextType = {
   createLocalComment?: (comment: Comment) => void
   updateLocalComment?: (id: string, message: string) => void
   deleteLocalComment?: (id: string) => void
-  
+  toggleLocalCommentLike?: (id: string, addLike: boolean) => void
 }
 
 export type CommentServiceType = {

@@ -69,6 +69,31 @@ export function PostProvider(props: PostContextType) {
   function deleteLocalComment(id: string) {
     setComments(prevComments => prevComments.filter(comment => comment.id !== id))
   }
+
+  function toggleLocalCommentLike(id: string, addLike: boolean) {
+    setComments(prevComments => {
+      return prevComments.map(comment => {
+        if (comment.id === id) {
+          if (addLike) {
+            return {
+              ...comment,
+              likedByMe: addLike,
+              likeCount: comment.likeCount += 1
+            }
+          } else {
+            return {
+              ...comment,
+              likedByMe: addLike,
+              likeCount: comment.likeCount -= 1
+            }
+          }
+        } else {
+          return comment
+        }
+      })
+    })
+  }
+
   return (
     <PostContext.Provider value={{
       post: {
@@ -79,7 +104,8 @@ export function PostProvider(props: PostContextType) {
       getReplies,
       createLocalComment,
       updateLocalComment,
-      deleteLocalComment
+      deleteLocalComment,
+      toggleLocalCommentLike
     }}>
       {loading ? <h1>Loading...</h1> :
         error ?

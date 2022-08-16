@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface IconBtnProps {
   Icon: any
-  isActive: boolean
+  isActive?: boolean
   color?: string
   children?: ReactNode
   onClick: () => void
