@@ -5,17 +5,7 @@ import { getPost } from "../service/post";
 import { Post, PostContextType, Comment } from "../types/PostContextType";
 
 
-const iPostContextState = {
-  post: null,
-  children: null,
-  rootComments: null,
-  comments: null,
-  setComments: () => { },
-  getReplies: (id: string) => { }
-}
-
-
-const PostContext = createContext<PostContextType>(iPostContextState)
+const PostContext = createContext<PostContextType>({} as PostContextType)
 
 export function usePost() {
   return useContext(PostContext)
@@ -24,14 +14,15 @@ export function usePost() {
 
 export function PostProvider(props: PostContextType) {
   const { id } = useParams()
-  const { loading, error, value: post } = useAsync<Post>(() => getPost(id || ''))
-  const [comments, setComments] = useState<Comment[] | undefined>([] as Comment[])
+  const { loading, error, value: post } = useAsync<Post>(() => getPost({ id } || ''))
+  const [comments, setComments] = useState<Comment[]>([] as Comment[])
 
 
   useEffect(() => {
     if (post?.comments !== null) {
-      setComments(post?.comments as SetStateAction<Comment[] | undefined>)
+      setComments(post?.comments as SetStateAction<Comment[]>)
     }
+    console.log(post?.id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post?.comments])
 
@@ -53,12 +44,23 @@ export function PostProvider(props: PostContextType) {
     return commentsByParentId[id]
   }
 
+  function createLocalComment(comment: Comment) {
+    setComments(prevComments => ([
+      comment,
+      ...prevComments
+    ])
+    )
+  }
 
   return (
     <PostContext.Provider value={{
-      post: post,
+      post: {
+        id: id,
+        ...post
+      },
       rootComments: commentsByParentId['null'],
-      getReplies
+      getReplies,
+      createLocalComment
     }}>
       {loading ? <h1>Loading...</h1> :
         error ?
