@@ -32,6 +32,9 @@ export type PostContextType = {
   setComments?: React.Dispatch<React.SetStateAction<string | null>>
   getReplies?: (id: string) => any
   createLocalComment?: (comment: Comment) => void
+  updateLocalComment?: (id: string, message: string) => void
+  deleteLocalComment?: (id: string) => void
+  
 }
 
 export type CommentServiceType = {

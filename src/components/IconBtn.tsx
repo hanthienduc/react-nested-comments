@@ -6,9 +6,11 @@ interface IconBtnProps {
   color?: string
   children?: ReactNode
   onClick: () => void
+
+  disabled?: boolean
 }
-export function IconBtn({ Icon, isActive, color, children, ...props }: IconBtnProps) {
-  return <button className={`btn icon-btn ${isActive ? 'icon-btn-active' : ''} ${color || ''}`} {...props}>
+export function IconBtn({ Icon, isActive, color, disabled, children, ...props }: IconBtnProps) {
+  return <button className={`btn icon-btn ${isActive ? 'icon-btn-active' : ''} ${color || ''}`} disabled={disabled} {...props}>
     <span className={`${children != null ? 'mr-1' : ''}`}>
       <Icon />
     </span>

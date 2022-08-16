@@ -52,6 +52,23 @@ export function PostProvider(props: PostContextType) {
     )
   }
 
+  function updateLocalComment(id: string, message: string) {
+    setComments(prevComments => {
+      return prevComments.map(comment => {
+        if (id === comment.id) {
+          return {
+            ...comment,
+            message: message
+          }
+        }
+        return comment
+      })
+    })
+  }
+
+  function deleteLocalComment(id: string) {
+    setComments(prevComments => prevComments.filter(comment => comment.id !== id))
+  }
   return (
     <PostContext.Provider value={{
       post: {
@@ -60,7 +77,9 @@ export function PostProvider(props: PostContextType) {
       },
       rootComments: commentsByParentId['null'],
       getReplies,
-      createLocalComment
+      createLocalComment,
+      updateLocalComment,
+      deleteLocalComment
     }}>
       {loading ? <h1>Loading...</h1> :
         error ?

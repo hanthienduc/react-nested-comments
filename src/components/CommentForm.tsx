@@ -5,7 +5,7 @@ interface CommentFormProps {
   error: string | undefined,
   onSubmit: (message: string) => Promise<any>
   autoFocus?: boolean
-  initialValue?: ''
+  initialValue?: string
 }
 
 export function CommentForm({ loading, error, onSubmit, autoFocus = false, initialValue = '' }: CommentFormProps) {
