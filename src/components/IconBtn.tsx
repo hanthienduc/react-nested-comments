@@ -3,8 +3,9 @@ import { ReactNode } from "react";
 interface IconBtnProps {
   Icon: any
   isActive: boolean
-  color: string
-  children: ReactNode
+  color?: string
+  children?: ReactNode
+  onClick: () => void
 }
 export function IconBtn({ Icon, isActive, color, children, ...props }: IconBtnProps) {
   return <button className={`btn icon-btn ${isActive ? 'icon-btn-active' : ''} ${color || ''}`} {...props}>
